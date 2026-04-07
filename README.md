@@ -1,4 +1,4 @@
-# 2D Geometry Modeling Library
+  # 2D Geometry Modeling Library
 
 ## Overview
 This project is a robust, object-oriented Java library designed for modeling, measuring, and manipulating 2D geometric shapes. It features a scalable class hierarchy that handles everything from basic vertices to complex, recursive polygons and a drawing canvas simulation. 
@@ -22,3 +22,22 @@ The project relies on two main architectural branches:
 * **Interfaces & Abstract Classes:** Created clear contracts using interfaces (Measurable, Circular, Drawable, Polygon) and shared behavior via abstract classes (SimplePolygon).
 * **Decorator Pattern:** Implemented ColoredPolygon to dynamically add color properties to any existing Polygon at runtime without altering the original polygon class's code.
 * **Immutability:** Designed core data classes like Vertex2D and ArrayPolygon to be immutable, preventing unintended side effects by defensive copying arrays in constructors.
+
+## Visual Demonstration
+
+![Geometry Visualizer Output](Visualizer_output.png)
+
+A Java Swing graphical interface (VisualDemo.java) is included to translate the underlying mathematical models and Paper canvas logic into rendered pixels. 
+
+### How to Run the Visual Demo
+
+**Option 1: Using an IDE (Recommended)**
+1. Clone the repository and open the project in your preferred Java IDE (IntelliJ IDEA, Eclipse, or VS Code).
+2. Locate the VisualDemo.java file located in the cz.muni.fi.pb112.project package.
+3. Run the main method inside VisualDemo.java. A window will pop up rendering the geometric scenes.
+
+**Option 2: From the Command Line**
+1. Open your terminal and navigate to the root directory of the project (the folder containing the cz directory).
+2. Compile the project files by running:
+   ```bash
+   javac cz/muni/fi/pb112/project/**/*.java cz/muni/fi/pb112/project/*.java
