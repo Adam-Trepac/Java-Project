@@ -1,43 +1,41 @@
-  # 2D Geometry Modeling Library
+# 2D Geometry Modeling Library
 
 ## Overview
-This project is a robust, object-oriented Java library designed for modeling, measuring, and manipulating 2D geometric shapes. It features a scalable class hierarchy that handles everything from basic vertices to complex, recursive polygons and a drawing canvas simulation. 
+An object-oriented Java library for modeling, measuring and manipulating 2D geometric shapes, built as a university project during my Business Informatics studies at Masaryk University. It includes a class hierarchy ranging from basic vertices to recursively subdivided polygons, a drawing canvas simulation and a small Swing GUI that renders the shapes.
 
-The primary goal of this project is to demonstrate strong software engineering principles, including encapsulation, polymorphism, design patterns, and effective use of the Java standard library.
+The goal of the project was to practise core software engineering principles: encapsulation, polymorphism, interfaces, a design pattern and effective use of the Java standard library.
 
-## Key Features & Capabilities
-* **Comprehensive Shape Hierarchy:** Supports simple polygons, regular polygons, circles, squares, and complex structures.
-* **Drawing Simulation:** Includes a Paper canvas (acting as a Drawable interface) that tracks unique geometric entities, prevents duplicates, and manages visual states like colors.
-* **Recursive Subdivisions:** Features mathematical logic to recursively divide triangles into smaller sub-triangles based on a specified depth, similar to Sierpiński fractals.
-* **Shape Composition:** Allows combining basic shapes into complex objects, such as generating a proportional Snowman using a reduction factor.
+## Key Features
+* **Shape hierarchy:** simple polygons, regular polygons, circles, squares, octagons and triangles.
+* **Drawing simulation:** a `Paper` canvas (implementing the `Drawable` interface) that tracks unique shapes, prevents duplicates and manages colors.
+* **Recursive subdivision:** triangles can be recursively divided into smaller sub-triangles to a given depth (similar to the Sierpiński triangle).
+* **Shape composition:** basic shapes are combined into more complex objects, e.g. a `Snowman` built from circles with a reduction factor.
 
 ## Architecture & Design
 ![Class Hierarchy Diagram](07-class-diagram.jpg)
 
-The project relies on two main architectural branches:
-1.  **Simple Polygons:** Defined by explicit coordinate vertices. It branches into array-backed (ArrayPolygon) and list-backed (CollectionPolygon) implementations to demonstrate different memory management strategies.
-2.  **Regular Polygons:** Defined mathematically by a center and a radius (GeneralRegularPolygon). Concrete implementations like Circle, Square, and RegularOctagon inherit from this structure and enforce specific edge counts.
+The project has two main branches:
+1. **Simple polygons** are defined by explicit vertices, with an array-backed (`ArrayPolygon`) and a list-backed (`CollectionPolygon`) implementation.
+2. **Regular polygons** are defined by a center and a radius (`GeneralRegularPolygon`). `Circle`, `Square` and `RegularOctagon` build on this class and fix the number of edges.
 
-### Software Engineering Concepts Demonstrated
-* **Interfaces & Abstract Classes:** Created clear contracts using interfaces (Measurable, Circular, Drawable, Polygon) and shared behavior via abstract classes (SimplePolygon).
-* **Decorator Pattern:** Implemented ColoredPolygon to dynamically add color properties to any existing Polygon at runtime without altering the original polygon class's code.
-* **Immutability:** Designed core data classes like Vertex2D and ArrayPolygon to be immutable, preventing unintended side effects by defensive copying arrays in constructors.
+### Concepts Practised
+* **Interfaces and abstract classes:** contracts defined by `Measurable`, `Circular`, `Drawable` and `Polygon`; shared behavior in the abstract class `SimplePolygon`.
+* **Decorator pattern:** `ColoredPolygon` adds a color to any existing `Polygon` without changing the original class.
+* **Immutability:** `Vertex2D` and `ArrayPolygon` are immutable; arrays are defensively copied in constructors.
 
 ## Visual Demonstration
 
 ![Geometry Visualizer Output](Visualizer_output.png)
 
-A Java Swing graphical interface (VisualDemo.java) is included to translate the underlying mathematical models and Paper canvas logic into rendered pixels. 
+`VisualDemo.java` is a Java Swing window that renders the shapes drawn on the `Paper` canvas.
 
-### How to Run the Visual Demo
+### How to Run
+The source files declare packages under `cz.muni.fi.pb112.project`, so compile them into an output folder and run the demo by its full class name.
 
-**Option 1: Using an IDE (Recommended)**
-1. Clone the repository and open the project in your preferred Java IDE (IntelliJ IDEA, Eclipse, or VS Code).
-2. Locate the VisualDemo.java file located in the cz.muni.fi.pb112.project package.
-3. Run the main method inside VisualDemo.java. A window will pop up rendering the geometric scenes.
+From the repository root:
+```bash
+javac -d out *.java
+java -cp out cz.muni.fi.pb112.project.VisualDemo
+```
 
-**Option 2: From the Command Line**
-1. Open your terminal and navigate to the root directory of the project (the folder containing the cz directory).
-2. Compile the project files by running:
-   ```bash
-   javac cz/muni/fi/pb112/project/**/*.java cz/muni/fi/pb112/project/*.java
+Alternatively, open the folder in an IDE (IntelliJ IDEA, Eclipse or VS Code) and run the `main` method in `VisualDemo.java`.
